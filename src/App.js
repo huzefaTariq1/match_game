@@ -21,7 +21,19 @@ function App() {
   const [choice1,setChoice1]=useState(null);
   const [choice2,setChoice2]=useState(null);
 
-
+//comparing two cards
+useEffect(() => {
+  if (choice1 && choice2){
+    if(choice1.src==choice2.src){
+      console.log("cards matched")
+      resetChoices()
+    }
+    else{
+      console.log("not matched")
+      resetChoices();
+    }
+  }
+}, [choice1,choice2]);
 
 //function swap cards
   const swapCards = () => {
@@ -38,6 +50,13 @@ function App() {
    choice1?setChoice2(card):setChoice1(card)
  }
 
+ //reset choices
+ const resetChoices=()=>{
+  setChoice1(null)
+  setChoice2(null)
+  setTurns(prevturn=>prevturn+1)
+ }
+
  
 
 
@@ -46,7 +65,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => swapCards()}>New game</button>
-       
+       <h1>Turns {turns}</h1>
       
     
      <center>
