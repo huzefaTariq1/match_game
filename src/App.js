@@ -1,5 +1,6 @@
 
-import { useState } from 'react';
+import { useState,
+  useEffect } from 'react';
 import './App.css';
 import SingleCard from './components/SingleCard';
 
@@ -16,9 +17,13 @@ const cardImage = [
 function App() {
 
   const [mycards, setmycards] = useState([]);
-  const [turns, setTurns] = useState(0)
+  const [turns, setTurns] = useState(0);
+  const [choice1,setChoice1]=useState(null);
+  const [choice2,setChoice2]=useState(null);
 
 
+
+//function swap cards
   const swapCards = () => {
     const cards = [...cardImage, ...cardImage]
       .sort(() => Math.random() - 0.5)
@@ -28,7 +33,14 @@ function App() {
 
   }
 
-  console.log(mycards)
+ // function setting two choices
+ const setChoices=(card)=>{
+   choice1?setChoice2(card):setChoice1(card)
+ }
+
+ 
+
+
 
 
   return (
@@ -41,7 +53,7 @@ function App() {
       <div className='cr'>
         {mycards.map((card) => {
           return (
-           <SingleCard key={card.id} card={card}/>
+           <SingleCard key={card.id} card={card} setChoices={setChoices}/>
           )
         })}
       </div>
