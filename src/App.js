@@ -73,7 +73,8 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => swapCards()}>New game</button>
+      <button onClick={() => swapCards()}>Click Here To Start New Game</button>
+
       <h1>Turns {turns}</h1>
 
 

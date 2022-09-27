@@ -6,12 +6,14 @@ const SingleCard = ({ card, setChoices, flipped }) => {
     setChoices(card)
   }
   return (
+  
     <div className='card'  >
       <div className={flipped?"flipped":""}>
         <img className='front' src={card.src} alt="card front"></img>
         <img onClick={clickedimage} className='back' src="img/cover.png" alt="card back"></img>
       </div>
     </div>
+  
   )
 }
 
